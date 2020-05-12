@@ -1,1 +1,54 @@
-<p>recibo works!</p>
+
+<form class = "example-form" [formGroup]="reciboForm" (ngSubmit)="sumbit()">
+
+    <h1>Crear Recibo</h1>
+    <mat-label>Numero de Recibo: 
+        <mat-form-field> 
+            <input  matInput type="number" formControlName="nroRecibo" placeholder="ej: 001">
+        </mat-form-field>
+    </mat-label>
+
+
+    <div formArrayName="empleados">
+        Empleado
+        <button type="button" mat-mini-fab color="warn" (click)="agregarEmpleado()">+</button>
+    
+        <div *ngFor="let empleado of empleados.controls; let i = index">
+            <mat-label>nombre:
+                <mat-form-field> 
+                    <input  matInput type="text" [formControlName]="i" placeholder="ej: Juan">
+                </mat-form-field>
+            </mat-label>
+        </div>
+    
+    </div>
+
+    <div formGroupName='concepto'>
+        concepto <br>  
+        <mat-label>Detalle:
+            <mat-form-field> 
+                <input  matInput type="text" formControlName="detalle" placeholder="ej: Luz">            
+            </mat-form-field>
+        </mat-label>
+        <mat-label>Importe:
+            <mat-form-field> 
+                <input  matInput type="number" formControlName="subTotal" placeholder="ej: 1000">            
+            </mat-form-field>
+        </mat-label>
+
+    </div>
+    <mat-label>¿Paga en efectivo?
+        <mat-checkbox formControlName="efectivo"></mat-checkbox>
+    </mat-label>
+    <br>
+    <br>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="fecha de pago" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <br>
+    
+    <button mat-raised-button color="primary" type="submit" >Guardar</button>
+
+</form>

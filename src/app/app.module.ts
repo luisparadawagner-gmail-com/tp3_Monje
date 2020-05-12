@@ -8,6 +8,12 @@ import { ReciboComponent } from './recibo/recibo.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,10 +25,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule 
   ],
-  providers: [],
+  providers: [ 
+    MatDatepickerModule,
+    MatNativeDateModule 
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
