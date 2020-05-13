@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,  } from '@angular/core';
+
 
 @Component({
   selector: 'app-formulario',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
+  titulo: String = 'titulo padre' ;
+
+   apodo: string;
+ 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
+
+ 
+  onApodo(apodo) {
+    debugger;
+		this.apodo = apodo;
+	}
+
+
 
 }

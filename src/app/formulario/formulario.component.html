@@ -1,3 +1,6 @@
 <p>formulario works!</p>
 
-<app-recibo></app-recibo>
+
+<app-recibo [var1]="titulo"  (apodo)="onApodo($event)"></app-recibo>
+
+<p>Apodo: {{apodo}}</p>
