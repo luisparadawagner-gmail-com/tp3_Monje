@@ -1,13 +1,17 @@
 
 <form class = "example-form" [formGroup]="reciboForm" (ngSubmit)="sumbit()">
 
+    <p>Titulo de: {{var1}}</p>
+
     <h1>Crear Recibo</h1>
     <mat-label>Numero de Recibo: 
         <mat-form-field> 
-            <input  matInput type="number" formControlName="nroRecibo" placeholder="ej: 001">
+            <input  matInput type="number" formControlName="nroRecibo" placeholder="ej: 001" [(ngModel)]="nroRecibo">
         </mat-form-field>
     </mat-label>
-
+    
+    
+   
 
     <div formArrayName="empleados">
         Empleado
@@ -27,12 +31,12 @@
         concepto <br>  
         <mat-label>Detalle:
             <mat-form-field> 
-                <input  matInput type="text" formControlName="detalle" placeholder="ej: Luz">            
+                <input  matInput type="text" formControlName="detalle" placeholder="ej: Luz" [(ngModel)]="detalle">            
             </mat-form-field>
         </mat-label>
         <mat-label>Importe:
             <mat-form-field> 
-                <input  matInput type="number" formControlName="subTotal" placeholder="ej: 1000">            
+                <input  matInput type="number" formControlName="subTotal" placeholder="ej: 1000" [(ngModel)]="subTotal" >            
             </mat-form-field>
         </mat-label>
 
@@ -43,18 +47,20 @@
     <br>
     <br>
     <mat-form-field>
-        <input matInput [matDatepicker]="picker1" placeholder="fecha de pago" [formControl]="date">
+        <input matInput [matDatepicker]="picker1" placeholder="fecha de pago" formControlName="fechaPago">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
     <br>
     
     <button mat-raised-button color="primary" type="submit" >Guardar</button>
+    <br>
 
-
-    <button type="button" (click)="ponerApodo(empleados)">Poner Apodo</button>
+    <button mat-raised-button color="warn" type="button" (click)="ponerApodo(empleados)">Apodo de recibo</button>
     
-    <p>Titulo de: {{var1}}</p>
-   
+    
+    <p>numero de recibo: {{nroRecibo}}</p>
+    <p>total: {{subTotal | currency: 'USD'}}</p>
+    <p>que paga?: {{detalle | uppercase}}</p>
 
 </form>

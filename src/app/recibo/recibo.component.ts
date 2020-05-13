@@ -15,8 +15,13 @@ export class ReciboComponent implements OnInit {
 
   @Output() apodo = new EventEmitter<string>();
   
+  recibo: Recibo = {
+    nroRecibo: 1
+    
+  }
 
 
+ 
   reciboForm = this.fb.group({
     nroRecibo:['',Validators.required],
     concepto: this.fb.group({
@@ -27,10 +32,10 @@ export class ReciboComponent implements OnInit {
     fechaPago:new FormControl(new Date()),
     empleados: this.fb.array([this.fb.control('')])
   });
-
-  nroRecibo = new FormControl();
-
   serializedDate = new FormControl((new Date()).toISOString());
+
+  
+
   get empleados(){
       return this.reciboForm.get('empleados') as FormArray;
   }
@@ -43,7 +48,7 @@ export class ReciboComponent implements OnInit {
 
   ponerApodo(nroRecibo: FormControl) {
     debugger;
-    if (this.nroRecibo.value === 1) {
+    if (nroRecibo.value === 1) {
       this.apodo.emit('primer recibo');
     } else {
       this.apodo.emit('no es el primer recibo');
@@ -62,8 +67,8 @@ export class ReciboComponent implements OnInit {
         subTotal: 1000,
       },
       efectivo: true,
-      fechaPago:new FormControl(new Date()),
-			empleados: [ '' ]
+      fechaPago:new Date(),
+			empleados: [ 'nico' ]
     });
     
     this.reciboForm.patchValue({ total: 1000 });
